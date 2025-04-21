@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL News - Latest Cricket Updates</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #0c3483 0%, #a2b6df 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #ffcc00;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: url('Tata-IPL-2023.webp');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+        }
+        
+        .hero-content {
+            position: relative;
+            color: white;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            width: 100%;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+        }
+        
+        /* Main Content Styles */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        /* Featured News */
+        .section-title {
+            font-size: 1.8rem;
+            border-bottom: 3px solid #0c3483;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: #0c3483;
+        }
+        
+        .featured-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .article-image {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .article-content {
+            padding: 1rem;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .article-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .article-excerpt {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: #0c3483;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        /* Team Standings Section */
+        .standings {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .standings-table th,
+        .standings-table td {
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        .standings-table th {
+            background-color: #f0f0f0;
+            font-weight: 600;
+        }
+        
+        .standings-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .team-logo {
+            width: 30px;
+            height: 30px;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+            border-radius: 50%;
+        }
+        
+        .team-name {
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Upcoming Matches */
+        .match-cards {
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .match-card {
+            background: white;
+            border-radius: 8px;
+            min-width: 280px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 1rem;
+        }
+        
+        .match-date {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 0.5rem;
+        }
+        
+        .match-teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 40%;
+        }
+        
+        .vs {
+            font-weight: bold;
+            color: #0c3483;
+        }
+        
+        .team-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+        }
+        
+        .match-venue {
+            font-size: 0.9rem;
+            text-align: center;
+            color: #666;
+        }
+        
+        /* Video Section */
+        .videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            height: 180px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .play-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-content {
+            padding: 1rem;
+        }
+        
+        .video-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 0.85rem;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, #0c3483 0%, #a2b6df 100%);
+            padding: 3rem 0;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .newsletter-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-button {
+            background-color: #ffcc00;
+            color: #333;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-button:hover {
+            background-color: #e6b800;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #bbb;
+            padding: 3rem 0 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #ffcc00;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ffcc00;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: #ffcc00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 4px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .newsletter-button {
+                border-radius: 4px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>IPL<span>News</span></h1>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">IPL 2023 Season Kicks Off with Record Viewership</h2>
+            <p class="hero-subtitle">Mumbai Indians face Chennai Super Kings in a thrilling opening match as the tournament returns with expanded format</p>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Featured News Section -->
+        <section>
+            <h2 class="section-title">Featured News</h2>
+            <div class="featured-articles">
+                <article class="article-card">
+                    <img src="Kohli.jpg" alt="Featured Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>April 5, 2023</span>
+                            <span>Cricket News</span>
+                        </div>
+                        <h3 class="article-title">Virat Kohli's Century Powers RCB to Convincing Win</h3>
+                        <p class="article-excerpt">Royal Challengers Bangalore captain scores his 8th IPL century as his team dominates against Rajasthan Royals.</p>
+                        <a href="kolhi-century.html" class="read-more">Read More</a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <img src="brook.jpg" alt="Featured Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>April 4, 2023</span>
+                            <span>Team Updates</span>
+                        </div>
+                        <h3 class="article-title">Delhi Capitals Sign Star All-rounder as Replacement</h3>
+                        <p class="article-excerpt">Delhi Capitals bring in international all-rounder as injury replacement for the remainder of the season.</p>
+                        <a href="delhi-capitals-signing.html" class="read-more">Read More</a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <img src="malinga.jpg" alt="Featured Article" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>April 3, 2023</span>
+                            <span>Analysis</span>
+                        </div>
+                        <h3 class="article-title">The Rise of Pace Bowlers in IPL 2023</h3>
+                        <p class="article-excerpt">Analysis of how pace bowlers are dominating the wicket charts in the early stages of IPL 2025.</p>
+                        <a href="pace-bowlers-rise.html" class="read-more">Read More</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        <!-- Team Standings Section -->
+        <section>
+            <h2 class="section-title">Team Standings</h2>
+            <div class="standings">
+                <table class="standings-table">
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Team</th>
+                            <th>P</th>
+                            <th>W</th>
+                            <th>L</th>
+                            <th>NR</th>
+                            <th>Pts</th>
+                            <th>NRR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td class="team-name">
+                                <img src="mi.jpg" alt="MI" class="team-logo">
+                                Mumbai Indians
+                            </td>
+                            <td>4</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>8</td>
+                            <td>+1.324</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="team-name">
+                                <img src="csk.jpg" alt="CSK" class="team-logo">
+                                Chennai Super Kings
+                            </td>
+                            <td>4</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>6</td>
+                            <td>+0.928</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="team-name">
+                                <img src="rcb.jpg" alt="RCB" class="team-logo">
+                                Royal Challengers Bangalore
+                            </td>
+                            <td>4</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>6</td>
+                            <td>+0.752</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="team-name">
+                                <img src="dc.jpg" alt="DC" class="team-logo">
+                                Delhi Capitals
+                            </td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>4</td>
+                            <td>+0.425</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td class="team-name">
+                                <img src="kkr.jpg" alt="KKR" class="team-logo">
+                                Kolkata Knight Riders
+                            </td>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>4</td>
+                            <td>+0.213</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Upcoming Matches Section -->
+        <section>
+            <h2 class="section-title">Upcoming Matches</h2>
+            <div class="match-cards">
+                <div class="match-card">
+                    <div class="match-date">April 6, 2023 • 7:30 PM IST</div>
+                    <div class="match-teams">
+                        <div class="team">
+                            <img src="rcb.jpg" alt="RCB" class="team-img">
+                            <span>RCB</span>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="team">
+                            <img src="kkr.jpg" alt="KKR" class="team-img">
+                            <span>KKR</span>
+                        </div>
+                    </div>
+                    <div class="match-venue">M. Chinnaswamy Stadium, Bengaluru</div>
+                </div>
+                
+                <div class="match-card">
+                    <div class="match-date">April 7, 2023 • 3:30 PM IST</div>
+                    <div class="match-teams">
+                        <div class="team">
+                            <img src="csk.jpg" alt="CSK" class="team-img">
+                            <span>CSK</span>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="team">
+                            <img src="srh.jpg" alt="SRH" class="team-img">
+                            <span>SRH</span>
+                        </div>
+                    </div>
+                    <div class="match-venue">MA Chidambaram Stadium, Chennai</div>
+                </div>
+                
+                <div class="match-card">
+                    <div class="match-date">April 7, 2023 • 7:30 PM IST</div>
+                    <div class="match-teams">
+                        <div class="team">
+                            <img src="mi.jpg" alt="MI" class="team-img">
+                            <span>MI</span>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="team">
+                            <img src="dc.jpg" alt="DC" class="team-img">
+                            <span>DC</span>
+                        </div>
+                    </div>
+                    <div class="match-venue">Wankhede Stadium, Mumbai</div>
+                </div>
+                
+                <div class="match-card">
+                    <div class="match-date">April 8, 2023 • 7:30 PM IST</div>
+                    <div class="match-teams">
+                        <div class="team">
+                            <img src="pbks.jpg" alt="PBKS" class="team-img">
+                            <span>PBKS</span>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="team">
+                            <img src="rr.jpg" alt="RR" class="team-img">
+                            <span>RR</span>
+                        </div>
+                    </div>
+                    <div class="match-venue">IS Bindra Stadium, Mohali</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Video Section -->
+        <section>
+            <h2 class="section-title">Latest Videos</h2>
+            <div class="videos">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                       <a href="https://www.youtube.com/watch?v=ENqUTJmFC4U&t=14s"> <img src="king.jpg" alt="Video thumbnail"></a>
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-content">
+                        <h3 class="video-title">Top 10 Catches of the Week</h3>
+                        <div class="video-meta">
+                            <span>4:26</span>
+                            <span>12K views</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <a href="https://www.youtube.com/watch?v=DApGdEIziNQ"><img src="match19.jpg" alt="Video thumbnail"></a>
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-content">
+                        <h3 class="video-title">Match Highlights: RCB vs RR</h3>
+                        <div class="video-meta">
+                            <span>7:37</span>
+                            <span>35K views</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <a href="https://www.youtube.com/watch?v=sSkYrxeO1Ag"><img src="interview.jpg" alt="Video thumbnail"></a>
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-content">
+                        <h3 class="video-title">Kohli's Post-Match Interview</h3>
+                        <div class="video-meta">
+                            <span>3:58</span>
+                            <span>42K views</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest IPL news, match updates, and exclusive content delivered to your inbox</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About IPL News</h3>
+                <p>IPL News is your premier destination for all the latest news, stats, and updates from the Indian Premier League.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">t</a>
+                    <a href="#" class="social-icon">in</a>
+                    <a href="#" class="social-icon">ig</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="players.html">Stats</a></li>
+                    <li><a href="teams.html">Teams</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="Signup.html">Login</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Teams</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Mumbai Indians</a></li>
+                    <li><a href="#">Chennai Super Kings</a></li>
+                    <li><a href="#">Royal Challengers Bangalore</a></li>
+                    <li><a href="#">Delhi Capitals</a></li>
+                    <li><a href="#">Kolkata Knight Riders</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li>Email: info@iplnews.com</li>
+                    <li>Phone: +91 123 456 7890</li>
+                    <li>Address: Cricket Center, Mumbai, India</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 IPL News. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

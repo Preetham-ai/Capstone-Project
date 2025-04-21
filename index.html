@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>IPL T20 2023 | Official Website</title>
+    <style>
+        :root {
+            --primary-blue: #0c1c3d;
+            --secondary-blue: #002f6c;
+            --accent-yellow: #ffcc00;
+            --accent-red: #e10600;
+            --accent-green: #00cc66;
+            --card-bg: #001f4d;
+            --text-light: #ffffff;
+            --text-dim: #cccccc;
+            --gradient-blue: linear-gradient(135deg, #001f4d 0%, #003580 100%);
+            --gradient-red: linear-gradient(135deg, #e10600 0%, #990000 100%);
+            --gradient-yellow: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: var(--primary-blue);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--gradient-blue);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .ipl-logo {
+            height: 60px;
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+        }
+        
+        .sponsor-logo {
+            height: 40px;
+        }
+        
+        /* Navigation */
+        nav {
+            background: var(--secondary-blue);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 12px 20px;
+            margin: 0 5px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        nav a:hover {
+            background: var(--accent-yellow);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+        
+        nav a.active {
+            background: var(--accent-red);
+            color: white;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--accent-yellow);
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 80%;
+        }
+        
+        /* Hero Banner */
+        .hero {
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(transparent, var(--primary-blue));
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            color: var(--accent-yellow);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--gradient-red);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+            background: linear-gradient(135deg, #990000 0%, #e10600 100%);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--accent-yellow);
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-yellow);
+            border-radius: 2px;
+        }
+        
+        /* Matches Section */
+        .matches-section {
+            background: var(--primary-blue);
+            padding: 60px 0;
+        }
+        
+        .matches-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-button {
+            padding: 12px 25px;
+            background: var(--secondary-blue);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 5px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .tab-button:hover {
+            background: #0048a8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .tab-button.active {
+            background: var(--gradient-red);
+            box-shadow: 0 4px 8px rgba(225,6,0,0.3);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .match-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-left: 5px solid var(--secondary-blue);
+        }
+        
+        #previous .match-card {
+            border-left-color: #555;
+        }
+        
+        #current .match-card {
+            border-left-color: var(--accent-yellow);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+        }
+        
+        #upcoming .match-card {
+            border-left-color: var(--accent-green);
+        }
+        
+        .match-card.live {
+            animation: pulseGlow 2s infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 204, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); }
+        }
+        
+        .teams {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+            margin: 10px;
+        }
+        
+        .team-logo {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+        }
+        
+        .team:hover .team-logo {
+            transform: scale(1.1);
+        }
+        
+        .vs {
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--accent-yellow);
+        }
+        
+        .match-result, .match-status, .match-details {
+            text-align: center;
+        }
+        
+        .score {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .result {
+            color: var(--accent-yellow);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        .date, .venue, .time {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+        
+        .live-badge {
+            background: var(--gradient-red);
+            color: white;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 2px 5px rgba(225,6,0,0.3);
+            animation: pulse 1.5s infinite;
+        }
+        
+        .status {
+            font-weight: bold;
+            margin: 15px 0;
+            font-size: 1.1rem;
+        }
+        
+        /* Magic Moments */
+        .magic-moments {
+            padding: 60px 0;
+            background: var(--primary-blue);
+            position: relative;
+        }
+        
+        .moments-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 25px;
+            padding: 20px 10px;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+        }
+        
+        .moments-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .moments-container::-webkit-scrollbar-track {
+            background: var(--secondary-blue);
+            border-radius: 10px;
+        }
+        
+        .moments-container::-webkit-scrollbar-thumb {
+            background: var(--accent-yellow);
+            border-radius: 10px;
+        }
+        
+        .moment {
+            background: white;
+            color: black;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .moment:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+        }
+        
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            height: 180px;
+        }
+        
+        .moment img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .moment:hover img {
+            transform: scale(1.1);
+        }
+        
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            color: rgba(255,255,255,0.9);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+        
+        .moment:hover .play-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+        
+        .moment-content {
+            padding: 15px;
+        }
+        
+        .moment-content p {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .moment-content small {
+            color: #666;
+            font-size: 0.8rem;
+        }
+        
+        /* Points Table */
+        .points-table {
+            padding: 60px 0;
+            background: var(--primary-blue);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--secondary-blue);
+        }
+        
+        th {
+            background: var(--gradient-blue);
+            font-weight: bold;
+            color: white;
+            position: sticky;
+            top: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(0,31,77,0.5);
+        }
+        
+        tr:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        td:first-child {
+            text-align: left;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .team-logo-small {
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+        }
+        
+        /* Stats Highlights */
+        .stats-highlights {
+            padding: 60px 0;
+            background: var(--primary-blue);
+        }
+        
+        .big-number {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 5rem;
+            font-weight: bold;
+            color: var(--accent-yellow);
+            line-height: 1;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-yellow);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        
+        .stat-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .highlight-content strong {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .stat-detail {
+            margin: 12px 0;
+            font-size: 1rem;
+            color: var(--text-dim);
+        }
+        
+        .stat-detail span {
+            font-weight: bold;
+            color: var(--accent-yellow);
+            margin-left: 5px;
+        }
+        
+        .sponsor-note {
+            margin-top: 40px;
+            font-style: italic;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* News Section */
+        .news-section {
+            padding: 60px 0;
+            background: var(--primary-blue);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-category {
+            display: inline-block;
+            background: var(--accent-yellow);
+            color: var(--primary-blue);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        
+        .news-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+        
+        .view-all-news {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .view-all-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--accent-yellow);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .view-all-btn:hover {
+            background: var(--accent-yellow);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(255, 204, 0, 0.3);
+        }
+        
+        /* Fantasy Section */
+        .fantasy-section {
+            padding: 60px 0;
+            background: var(--primary-blue);
+        }
+        
+        .fantasy-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .fantasy-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-yellow);
+            text-align: center;
+        }
+        
+        .fantasy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+        }
+        
+        .fantasy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-yellow);
+        }
+        
+        .fantasy-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text-dim);
+        }
+        
+        .fantasy-btn {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            background: var(--gradient-yellow);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .fantasy-btn:hover {
+            background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(255, 204, 0, 0.4);
+        }
+        
+        .fantasy-features {
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .fantasy-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .fantasy-feature i {
+            color: var(--accent-yellow);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .fantasy-leaderboard {
+            width: 100%;
+            margin: 40px auto 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .fantasy-leaderboard h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--accent-yellow);
+            font-size: 1.5rem;
+        }
+        
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .leaderboard-table th {
+            background: var(--secondary-blue);
+            padding: 12px;
+            text-align: left;
+            color: white;
+        }
+        
+        .leaderboard-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--secondary-blue);
+        }
+        
+        .leaderboard-table tr:nth-child(even) {
+            background: rgba(0,47,108,0.3);
+        }
+        
+        .leaderboard-table tr:hover {
+            background: var(--secondary-blue);
+        }
+        
+        .rank {
+            font-weight: bold;
+            color: var(--accent-yellow);
+            width: 40px;
+        }
+        
+        .user {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--accent-yellow);
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .points {
+            font-weight: bold;
+        }
+        
+        .prize {
+            color: var(--accent-yellow);
+            font-weight: bold;
+        }
+        
+        /* Teams Section */
+        .teams-section {
+            padding: 60px 0;
+            background: var(--primary-blue);
+        }
+        
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .team-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-top: 4px solid;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        
+        .team-logo-large {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin: 0 auto 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover .team-logo-large {
+            transform: scale(1.1);
+        }
+        
+        .team-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .team-captain {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .team-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+        
+        .team-stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-weight: bold;
+            color: var(--accent-yellow);
+            font-size: 1.1rem;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: var(--text-dim);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--accent-yellow);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--accent-yellow);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-newsletter input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+        
+        .footer-newsletter input::placeholder {
+            color: var(--text-dim);
+        }
+        
+        .footer-newsletter button {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent-yellow);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-newsletter button:hover {
+            background: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .ipl-logo {
+                margin-bottom: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .stat-value {
+                font-size: 4rem;
+            }
+            
+            .fantasy-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                justify-content: space-around;
+            }
+            
+            nav a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+                margin: 2px;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .tab-button {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .team {
+                width: 120px;
+            }
+            
+            .team-logo {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .vs {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <img src="ipl.jpg" alt="IPL Logo" class="ipl-logo">
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#matches" class="active">Matches</a>
+            <a href="ipl.html">Home</a>
+            <a href="players.html">Stats</a>
+            <a href="teams.html">Teams</a>
+            <a href="news.html">News</a>
+            <a href="Signup.html">Login</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>IPL 2023 SEASON</h1>
+            <p>Witness the biggest cricket extravaganza with world-class players and electrifying matches</p>
+            <a href="#matches" class="cta-button">View Schedule</a>
+        </div>
+    </section>
+    
+    <!-- Matches Section -->
+<section class="matches-section" id="matches">
+    <div class="container">
+        <div class="section-title">
+            <h2>Matches</h2>
+        </div>
+        
+        <div class="matches-tabs">
+            <button class="tab-button active" onclick="openTab('previous')">Previous</button>
+            <button class="tab-button active" onclick="openTab('current')">Current</button>
+            <button class="tab-button active" onclick="openTab('upcoming')">Upcoming</button>
+        </div>
+        
+        <div id="previous" class="tab-content" style="display: block;">
+            <div class="match-card">
+                <div class="teams">
+                    <div class="team">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/Mumbai_Indians_Logo.svg/1200px-Mumbai_Indians_Logo.svg.png" alt="MI" class="team-logo">
+                        <span>Mumbai Indians</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Chennai_Super_Kings_Logo.svg/1200px-Chennai_Super_Kings_Logo.svg.png" alt="CSK" class="team-logo">
+                        <span>Chennai Super Kings</span>
+                    </div>
+                </div>
+                <div class="match-result">
+                    <div class="score">MI: 185/5 (20) | CSK: 182/6 (20)</div>
+                    <div class="result">Mumbai Indians won by 3 runs</div>
+                    <div class="date">May 12, 2023 | Wankhede Stadium</div>
+                </div>
+            </div>
+            
+            <div class="match-card">
+                <div class="teams">
+                    <div class="team">
+                        <img src="rcb.jpg" alt="RCB" class="team-logo">
+                        <span>Royal Challengers</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Kolkata_Knight_Riders_Logo.svg/1200px-Kolkata_Knight_Riders_Logo.svg.png" alt="KKR" class="team-logo">
+                        <span>Kolkata Knight Riders</span>
+                    </div>
+                </div>
+                <div class="match-result">
+                    <div class="score">RCB: 205/3 (20) | KKR: 198/7 (20)</div>
+                    <div class="result">Royal Challengers won by 7 runs</div>
+                    <div class="date">May 10, 2023 | M. Chinnaswamy Stadium</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        <div id="current" class="tab-content" style="display: block;">
+            <div class="match-card live">
+                <div class="live-badge">LIVE</div>
+                <div class="teams">
+                    <div class="team">
+                        <img src="dc.jpg" alt="DC" class="team-logo">
+                        <span>Delhi Capitals</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <img src="srh.jpg" alt="SRH" class="team-logo">
+                        <span>Sunrisers Hyderabad</span>
+                    </div>
+                </div>
+                <div class="match-status">
+                    <div class="score">DC: 147/4 (15.2) | SRH: 178/6 (20)</div>
+                    <div class="status">Delhi Capitals need 32 runs from 28 balls</div>
+                    <div class="venue">Arun Jaitley Stadium, Delhi</div>
+                </div>
+            </div>
+        </div>
+    
+
+
+
+        <div id="upcoming" class="tab-content" style="display: block;">
+            <div class="match-card">
+                <div class="teams">
+                    <div class="team">
+                        <img src="csk.jpg" alt="CSK" class="team-logo">
+                        <span>Chennai Super Kings</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <img src="rr.jpg" alt="RR" class="team-logo">
+                        <span>Rajasthan Royals</span>
+                    </div>
+                </div>
+                <div class="match-details">
+                    <div class="date">May 15, 2025</div>
+                    <div class="venue">MA Chidambaram Stadium, Chennai</div>
+                    <div class="time">7:30 PM IST</div>
+                </div>
+            </div>
+            
+            <div class="match-card">
+                <div class="teams">
+                    <div class="team">
+                        <img src="kkr.jpg" alt="KKR" class="team-logo">
+                        <span>Kolkata Knight Riders</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="team">
+                        <img src="srh.jpg" alt="SRH" class="team-logo">
+                        <span>Sunrisers Hyderabad</span>
+                    </div>
+                </div>
+                <div class="match-details">
+                    <div class="date">May 16, 2025</div>
+                    <div class="venue">Eden Gardens, Kolkata</div>
+                    <div class="time">7:30 PM IST</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => {
+                tab.style.display = 'none';
+            });
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show the selected tab content and mark its button as active
+            document.getElementById(tabName).style.display = 'block';
+            
+            // Find and activate the clicked button
+            const activeButton = document.querySelector(`.tab-button[onclick="openTab('${tabName}')"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // Scroll to the content
+            document.getElementById(tabName).scrollIntoView({behavior: 'smooth'});
+        }
+        
+        // Set default tab on page load (previous is currently shown by default)
+        document.addEventListener('DOMContentLoaded', function() {
+            // You can change 'previous' to whichever tab you want to show by default
+            openTab('previous');
+        });
+    </script>    
+</section>
+</body>
+</html>

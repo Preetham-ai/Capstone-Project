@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('captain.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-content {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        .login-form {
+            background-color: rgba(1, 41, 112, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .branding {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+        }
+
+        .logo span {
+            font-size: 40px;
+            font-weight: bold;
+            color: #0055b3;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .slogan {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #eee;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #4a7aff;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-group input {
+            margin-right: 8px;
+        }
+
+        .forgot-password {
+            color: #4a7aff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: #7b9fff;
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #ff5713;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .btn:hover {
+            background-color: #e24200;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 87, 19, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .signup-link {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #4a7aff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .signup-link a:hover {
+            color: #7b9fff;
+            text-decoration: underline;
+        }
+
+        .promo-content {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .promo-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .promo-subtitle {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #eee;
+        }
+
+        .promo-features {
+            margin-bottom: 20px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .feature-icon {
+            min-width: 30px;
+            height: 30px;
+            background-color: rgba(255, 87, 19, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+        }
+
+        .feature-icon::before {
+            content: "✓";
+            color: #ff5713;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .feature-text {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .loading.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #ff5713;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 40px;
+            }
+            
+            .login-content {
+                margin-bottom: 0;
+                margin-right: 40px;
+            }
+            
+            .login-form {
+                padding: 40px;
+            }
+            
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .logo span {
+                font-size: 50px;
+            }
+            
+            h1 {
+                font-size: 26px;
+            }
+            
+            .slogan {
+                font-size: 15px;
+            }
+            
+            .promo-content {
+                text-align: left;
+                padding-left: 40px;
+            }
+            
+            .promo-title {
+                font-size: 36px;
+            }
+            
+            .promo-subtitle {
+                font-size: 18px;
+            }
+            
+            .feature-text {
+                font-size: 15px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .logo {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .logo span {
+                font-size: 60px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .promo-title {
+                font-size: 48px;
+            }
+            
+            .promo-subtitle {
+                font-size: 22px;
+            }
+            
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .feature-icon::before {
+                font-size: 20px;
+            }
+            
+            .feature-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-content">
+            <div class="login-form">
+                <div class="branding">
+                    <div class="logo">
+                        <span>IPL</span>
+                    </div>
+                    <h1>Welcome to IPL Official</h1>
+                    <div class="slogan">Cricket ka biggest celebration!</div>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <div class="error-message" id="emailError">Please enter a valid email address</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <div class="error-message" id="passwordError">Password must be at least 6 characters</div>
+                    </div>
+                    <button type="submit" class="btn" id="loginBtn">Login</button>
+                    <div class="signup-link">
+                        Don't have an account? <a href="register.html">Register Now</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="promo-content">
+            <h2 class="promo-title">Experience Cricket Like Never Before</h2>
+            <p class="promo-subtitle">Join millions of fans and get exclusive access to IPL content and features.</p>
+            <div class="promo-features">
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <div class="feature-text">Live match streaming with multi-camera views</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <div class="feature-text">Exclusive player interviews and behind-the-scenes content</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <div class="feature-text">Fantasy league with exciting prizes</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"></div>
+                    <div class="feature-text">Real-time match analytics and statistics</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading" id="loadingScreen">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const loadingScreen = document.getElementById('loadingScreen');
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+
+            emailInput.addEventListener('blur', function() {
+                if (!isValidEmail(emailInput.value) && emailInput.value !== '') {
+                    emailError.style.display = 'block';
+                    emailInput.style.borderColor = '#ff6b6b';
+                } else {
+                    emailError.style.display = 'none';
+                    emailInput.style.borderColor = '';
+                }
+            });
+
+            passwordInput.addEventListener('blur', function() {
+                if (passwordInput.value.length < 6 && passwordInput.value !== '') {
+                    passwordError.style.display = 'block';
+                    passwordInput.style.borderColor = '#ff6b6b';
+                } else {
+                    passwordError.style.display = 'none';
+                    passwordInput.style.borderColor = '';
+                }
+            });
+
+            emailInput.addEventListener('input', function() {
+                emailError.style.display = 'none';
+                emailInput.style.borderColor = '';
+            });
+
+            passwordInput.addEventListener('input', function() {
+                passwordError.style.display = 'none';
+                passwordInput.style.borderColor = '';
+            });
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                
+                if (!isValidEmail(emailInput.value)) {
+                    emailError.style.display = 'block';
+                    emailInput.style.borderColor = '#ff6b6b';
+                    isValid = false;
+                }
+                
+                if (passwordInput.value.length < 6) {
+                    passwordError.style.display = 'block';
+                    passwordInput.style.borderColor = '#ff6b6b';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    loadingScreen.classList.add('active');
+                    
+                    setTimeout(function() {
+                        loadingScreen.classList.remove('active');
+                        
+                        alert('Login successful! Redirecting to dashboard...');
+                    }, 1500);
+                }
+            });
+
+            const allInputs = document.querySelectorAll('input');
+            allInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('focused');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
